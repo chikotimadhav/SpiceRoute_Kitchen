@@ -1,0 +1,56 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: none;
+  border-radius: 40px;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+  white-space: nowrap;
+}
+.btn:hover  { transform: translateY(-2px); }
+.btn:active { transform: translateY(0);    }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+/* Sizes */
+.btn--sm  { font-size: 12px; padding: 8px  18px; }
+.btn--md  { font-size: 14px; padding: 13px 26px; }
+.btn--lg  { font-size: 16px; padding: 16px 32px; }
+
+/* Variants */
+.btn--primary {
+  background: linear-gradient(135deg, #E8820C, #B5451B);
+  color: #fff;
+  box-shadow: 0 4px 20px #E8820C55;
+}
+.btn--primary:hover { box-shadow: 0 8px 28px #E8820C77; }
+
+.btn--whatsapp {
+  background: #25D366;
+  color: #fff;
+  box-shadow: 0 4px 20px #25D36655;
+}
+.btn--whatsapp:hover { box-shadow: 0 8px 28px #25D36677; }
+
+.btn--outline {
+  background: transparent;
+  border: 1.5px solid #E8820C55;
+  color: #C4A882;
+}
+.btn--outline:hover { border-color: #E8820C; color: #E8820C; }
+
+.btn--ghost {
+  background: transparent;
+  color: #E8820C;
+}
+.btn--ghost:hover { background: #E8820C18; }
+
+.btn--instagram {
+  background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+  color: #fff;
+}
