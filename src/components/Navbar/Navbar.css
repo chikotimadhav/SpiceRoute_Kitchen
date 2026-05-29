@@ -19,7 +19,10 @@
 .navbar--light .navbar__logo-name { color: #2E1A0E; }
 .navbar__logo-sub  { font-size:9px; letter-spacing:3px; text-transform:uppercase; color:#E8820C; font-family:'DM Sans',sans-serif; }
 
-.navbar__links { display:flex; gap:24px; align-items:center; }
+.navbar__links { display:none; gap:24px; align-items:center; }
+@media (min-width: 768px) {
+  .navbar__links { display:flex; }
+}
 .navbar__link {
   background:none; border:none; cursor:pointer;
   font-family:'DM Sans',sans-serif; font-size:13px; font-weight:500;
@@ -36,6 +39,9 @@
 .navbar--light .navbar__theme-btn { background:#FAF0DC; }
 .navbar__hamburger { background:none; border:none; cursor:pointer; font-size:22px; color:#FDF6EC; line-height:1; }
 .navbar--light .navbar__hamburger { color:#2E1A0E; }
+@media (min-width: 768px) {
+  .navbar__hamburger { display: none; }
+}
 
 .navbar__auth-desktop { display: none; }
 @media (min-width: 768px) {
