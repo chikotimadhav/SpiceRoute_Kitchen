@@ -1,26 +1,16 @@
 import { useState, useEffect } from "react";
 import { useTheme } from "../../context/ThemeContext";
 import useCartStore from "../../store/useCartStore";
-import useAuthStore from "../../store/useAuthStore";
 import { COLORS } from "../../constants";
 
 export default function CheckoutModal() {
   const { darkMode } = useTheme();
   const { isCheckoutOpen, closeCheckout, items, clearCart } = useCartStore();
-  const { user, isAuthenticated } = useAuthStore();
   
   const [step, setStep] = useState(1);
   const [form, setForm] = useState({ name: "", phone: "", address: "", payment: "COD" });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [otpState, setOtpState] = useState({ sent: false, generated: "", entered: "", verified: false });
-
-  // Pre-fill user data and auto-verify phone if logged in
-  useEffect(() => {
-    if (isCheckoutOpen && isAuthenticated && user) {
-      setForm(prev => ({ ...prev, name: user.name || "", phone: user.phone || "" }));
-      setOtpState(prev => ({ ...prev, verified: true }));
-    }
-  }, [isCheckoutOpen, isAuthenticated, user]);
 
   if (!isCheckoutOpen) return null;
 

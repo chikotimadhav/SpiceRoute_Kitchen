@@ -1,5 +1,4 @@
 import { create } from "zustand";
-import useAuthStore from "./useAuthStore";
 
 const useCartStore = create((set) => ({
   items: [],
@@ -11,22 +10,11 @@ const useCartStore = create((set) => ({
   closeCart: () => set({ isCartOpen: false }),
 
   openCheckout: () => {
-    const authState = useAuthStore.getState();
-    if (!authState.isAuthenticated) {
-      authState.openAuthModal("login");
-      return;
-    }
     set({ isCheckoutOpen: true, isCartOpen: false });
   },
   closeCheckout: () => set({ isCheckoutOpen: false }),
 
   addToCart: (item) => {
-    const authState = useAuthStore.getState();
-    if (!authState.isAuthenticated) {
-      authState.openAuthModal("login");
-      return; // Do not add item, prevent state update
-    }
-
     set((state) => {
       const existingItem = state.items.find((i) => i.name === item.name);
       if (existingItem) {

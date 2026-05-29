@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useScrollY } from "../../hooks/useScrollY";
 import { useTheme }   from "../../context/ThemeContext";
 import useCartStore   from "../../store/useCartStore";
-import useAuthStore   from "../../store/useAuthStore";
 import { NAV_LINKS, WHATSAPP_URL, COLORS } from "../../constants";
 import Button from "../Button";
 import "./Navbar.css";
@@ -14,7 +13,6 @@ function scrollTo(id) {
 export default function Navbar() {
   const { darkMode, toggleTheme } = useTheme();
   const { toggleCart, items } = useCartStore();
-  const { user, isAuthenticated, openAuthModal, logout } = useAuthStore();
   const totalItems = items.reduce((sum, i) => sum + i.quantity, 0);
   const scrollY   = useScrollY();
   const [open, setOpen] = useState(false);
@@ -42,21 +40,6 @@ export default function Navbar() {
 
         {/* Actions */}
         <div className="navbar__actions" style={{ display: "flex", gap: "16px", alignItems: "center" }}>
-          
-          {/* Auth Buttons */}
-          <div className="navbar__auth-desktop">
-            {!isAuthenticated ? (
-              <>
-                <button onClick={() => openAuthModal("login")} style={{ background: "transparent", border: "none", color: darkMode ? COLORS.cream : COLORS.charcoal, fontSize: 16, cursor: "pointer", fontFamily: "'DM Sans',sans-serif", fontWeight: 500 }}>Log in</button>
-                <button onClick={() => openAuthModal("signup")} style={{ background: "transparent", border: "none", color: darkMode ? COLORS.cream : COLORS.charcoal, fontSize: 16, cursor: "pointer", fontFamily: "'DM Sans',sans-serif", fontWeight: 500 }}>Sign up</button>
-              </>
-            ) : (
-              <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                <span style={{ fontSize: 15, fontFamily: "'DM Sans',sans-serif", fontWeight: 600, color: darkMode ? COLORS.cream : COLORS.bark }}>{user?.name?.split(" ")[0]}</span>
-                <button onClick={logout} style={{ background: "transparent", border: "none", color: COLORS.mushroom, fontSize: 14, cursor: "pointer", fontFamily: "'DM Sans',sans-serif" }}>Log out</button>
-              </div>
-            )}
-          </div>
 
           <button className={`navbar__theme-btn ${darkMode ? "navbar__theme-btn--dark" : ""}`}
             onClick={toggleCart} style={{ position: "relative" }}>

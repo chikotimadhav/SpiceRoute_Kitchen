@@ -3,7 +3,6 @@ import Footer          from "../components/Footer";
 import FloatingButtons from "../components/FloatingButtons";
 import Cart            from "../components/Cart/Cart";
 import CheckoutModal   from "../components/Checkout/CheckoutModal";
-import AuthModal       from "../components/Auth/AuthModal";
 
 /**
  * Main layout — wraps every public-facing page.
@@ -20,7 +19,6 @@ export default function MainLayout({ children }) {
       <FloatingButtons />
       <Cart />
       <CheckoutModal />
-      <AuthModal />
     </>
   );
 }
