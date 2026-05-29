@@ -48,7 +48,7 @@ export default function CheckoutModal() {
     let success = false;
 
     try {
-      const response = await fetch("https://formsubmit.co/ajax/chikoticreations@gmail.com", {
+      const response = await fetch("https://formsubmit.co/ajax/774018f7c723aa35a9713f28340451bd", {
         method: "POST",
         headers: { 
             'Content-Type': 'application/json',
